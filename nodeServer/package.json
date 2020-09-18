@@ -1,0 +1,27 @@
+{
+  "name": "nodeserver",
+  "version": "1.0.0",
+  "description": "Fastify node server ",
+  "main": "index.js",
+  "scripts": {
+    "lint": "semistandard | snazzy",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "Fastify",
+    "node",
+    "testing"
+  ],
+  "author": "gkampitakis",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^3.4.1",
+    "fastify-custom-healthcheck": "^1.1.4"
+  },
+  "devDependencies": {
+    "autocannon": "^6.4.0",
+    "semistandard": "^14.2.3",
+    "snazzy": "^8.0.0"
+  }
+}

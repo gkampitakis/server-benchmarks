@@ -12,4 +12,4 @@ EXPOSE 5000
 
 USER node
 
-CMD ["node" "index.js"]
+CMD node index.js

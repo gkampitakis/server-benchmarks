@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: fastify-server
+  name: tool-box
+  labels:
+    app: toolBox
+spec:
+  containers:
+    - name: dummy-box
+      image: ubuntu
+      command: ["/bin/sh", "-ec", "sleep 1000"]
+
+# echo "nameserver 8.8.8.8" | tee /etc/resolv.conf > /dev/null
+# apt-get update
+# apt-get -y install curl

@@ -1,0 +1,15 @@
+**/*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+!Makefile
+
+coverage.out
+README.md
+Dockerfile
+.git
+dockerignore

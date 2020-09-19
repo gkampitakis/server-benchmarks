@@ -1,0 +1,6 @@
+github.com/gkampitakis/go-webserver v0.0.0-20200913161337-52019aea5849 h1:g81hUot4kBeTjF0fZn1OXOHCyrxD8EsZHgwrOmP6+gI=
+github.com/gkampitakis/go-webserver v0.0.0-20200913161337-52019aea5849/go.mod h1:+eE1MqiiqtGAaBWr8tIpM/+D7R1RLDPeiJBh33Cg/fg=
+github.com/joho/godotenv v1.3.0 h1:Zjp+RcGpHhGlrMbJzXTrZZPrWj+1vfm90La1wgB6Bhc=
+github.com/joho/godotenv v1.3.0/go.mod h1:7hK45KPybAkOC6peb+G5yklZfMxEjkZhHbwpqxOKXbg=
+github.com/julienschmidt/httprouter v1.3.0 h1:U0609e9tgbseu3rBINet9P48AI/D3oJs4dN7jwJOQ1U=
+github.com/julienschmidt/httprouter v1.3.0/go.mod h1:JR6WtHb+2LUe8TCKY3cZOxFyyO8IZAc4RVcycCCAKdM=

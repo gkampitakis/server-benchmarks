@@ -1,0 +1,12 @@
+**/*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+!Makefile
+!Dockerfile
+
+coverage.out

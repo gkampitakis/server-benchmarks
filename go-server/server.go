@@ -1,12 +1,11 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"github.com/julienschmidt/httprouter"
 	"log"
 	"net/http"
-
-	"encoding/json"
-	"github.com/julienschmidt/httprouter"
 )
 
 type Response struct {
@@ -29,8 +28,7 @@ func ListenCtrl(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	}
 }
 
-func PostDataCtrl(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
-
+func PostDataCtrl(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	w.Header().Set("Content-Type", "application/json")
 
 	defer r.Body.Close()
@@ -60,7 +58,7 @@ func main() {
 	router.GET("/listen", ListenCtrl)
 	router.POST("/postdata", PostDataCtrl)
 
-	log.Printf("Server listening on port %v", 5000)
+	log.Printf("Go Server listening on port %v 🚀", 5000)
 
 	error := http.ListenAndServe(":5000", router)
 

@@ -12,7 +12,7 @@ class Server {
 
     await this.server.ready();
 
-    this.server.listen(5000, '0.0.0.0', () => console.log('Server listening on port 5000 🚀'));
+    this.server.listen(5000, '0.0.0.0', () => console.log('Fastify Server listening on port 5000 🚀'));
   }
 
   registerRoutes () {

@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fastify-server
-  namespace: fastify-server
+  namespace: go-server
+  name: go-server
   labels:
-    app: fastify_server
+    app: go_server
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: fastify_server
+      app: go_server
   template:
     metadata:
       labels:
-        app: fastify_server
+        app: go_server
     spec:
       containers:
-        - name: fastify-server
-          image: gkabitakis/fastify-server:1.0.0
+        - name: go-server
+          image: gkabitakis/go-server:1.0.0
           resources:
             requests:
               memory: '1Gi'
@@ -31,11 +31,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: fastify-server
-  namespace: fastify-server
+  name: go-server
+  namespace: go-server
 spec:
   selector:
-    app: fastify_server
+    app: go_server
   ports:
     - protocol: TCP
       port: 80

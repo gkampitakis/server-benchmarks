@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  fastify-server:
+    container_name: fastify
+    build:
+      context: ./fastify-server
+    ports:
+      - 5001:5000
+  go-server:
+    container_name: go
+    build:
+      context: ./go-server
+    ports:
+      - 5000:5000
+  tool1:
+    container_name: autocannon1
+    image: node
+  tool2:
+    container_name: autocannon2
+    image: node
+  # vegeta:
+  #   container_name: vegeta
+  #   image: peterevans/vegeta
+  # go-server:
+  #   container_name: go
+  #   build:
+  #     context: ../go-server
+  #   ports:
+  #     - 5000:5000

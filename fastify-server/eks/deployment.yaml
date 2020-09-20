@@ -15,16 +15,26 @@ spec:
       labels:
         app: fastify_server
     spec:
+      affinity:
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                matchExpressions:
+                  - key: node.type
+                    operator: In
+                    values:
+                      - slave
       containers:
         - name: fastify-server
           image: gkabitakis/fastify-server:1.0.0
           resources:
             requests:
-              memory: '1Gi'
-              cpu: '2'
+              memory: '250Mi'
+              cpu: '0.2'
             limits:
-              memory: '1.5Gi'
-              cpu: '3'
+              memory: '300Mi'
+              cpu: '0.4'
           ports:
             - containerPort: 5000
 ---

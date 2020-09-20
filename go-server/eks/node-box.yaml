@@ -6,6 +6,8 @@ metadata:
   labels:
     app: nodeBox
 spec:
+  nodeSelector:
+    node.type: master
   containers:
     - name: node-box
       image: node

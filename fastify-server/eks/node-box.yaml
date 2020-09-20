@@ -6,9 +6,18 @@ metadata:
   labels:
     app: nodeBox
 spec:
+  nodeSelector:
+    node.type: master
   containers:
     - name: node-box
       image: node
+      resources:
+        requests:
+          memory: '500Mi'
+          cpu: '1'
+        limits:
+          memory: '1Gi'
+          cpu: '2'
       command: ["sh", "-c", "tail -f /dev/null"]
 
 # npm i autocannon -g 

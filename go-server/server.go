@@ -11,7 +11,6 @@ import (
 	"github.com/mackerelio/go-osstat/uptime"
 	"log"
 	"net/http"
-	"os"
 	"time"
 )
 

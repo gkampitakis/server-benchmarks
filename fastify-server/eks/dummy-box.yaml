@@ -6,6 +6,8 @@ metadata:
   labels:
     app: toolBox
 spec:
+  nodeSelector:
+    node.type: master
   containers:
     - name: dummy-box
       image: ubuntu

@@ -22,7 +22,7 @@ Containing Concepts:
 - `minikube start --nodes 3 -p multinod --cpus 4`
 - `kubectl drain node <node-name> --grace-period=30 --ignore-daemonsets=true` Drain a specific node or you can 
 specify which pods from a node to drain by running `--pod-selector=''` and a label.
-- `kubectl uncordeon <node-name>` After draining you must set node again to accept pods to be scheduled
+- `kubectl uncordon <node-name>` After draining you must set node again to accept pods to be scheduled
 
 
 Create docker-hub secret by running (No longer needed)

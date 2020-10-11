@@ -10,6 +10,7 @@ Containing Concepts:
 - Node affinity. 
 - Node draining and Pod Disruption Budget.
 - Horizontal Pod Autoscaler.
+- Node taints
 
 ## Useful Commands
 
@@ -20,9 +21,10 @@ Containing Concepts:
 - `docker stop <server-type>-server`
 - `docker stats <server-type>-server`
 - `minikube start --nodes 3 -p multinod --cpus 4`
-- `kubectl drain node <node-name> --grace-period=30 --ignore-daemonsets=true` Drain a specific node or you can 
+- `kubectl drain <node-name> --grace-period=30 --ignore-daemonsets=true` Drain a specific node or you can 
 specify which pods from a node to drain by running `--pod-selector=''` and a label.
 - `kubectl uncordon <node-name>` After draining you must set node again to accept pods to be scheduled
+- `kubectl taint nodes node1 key=value:NoSchedule`
 
 
 Create docker-hub secret by running (No longer needed)
@@ -55,3 +57,20 @@ You also need to label nodes if you want to test pod affinity,node selectors and
 You can achieve that by running `kubectl label nodes <node-name> <label-key>=<label-value>`.
 
 You need to also have metrics server enabled. When running in `minikube` you can just enable it by running `minikube addons enable metrics-server` or you can [install](https://github.com/kubernetes-sigs/metrics-server) it in your cluster.
+
+## Kubernetes apply taint to node
+
+You can apply a taint to a node. Taints are the opposite of Node affinities, they allow to repel a set of pods.
+
+If you want to apply `NoExecute` taint be careful that when you apply this taint it evicts pod that don't respect it. So if you want to apply this type of taint make sure first draining your node.
+
+- `kubectl drain <node-name> --grace-period=40 --ignore-daemonsets=true --pod-selector='<key-label>=<key-value>'`
+- Add taint
+```bash
+kubectl taint nodes <node-name>  key=value:TaintEffect
+# Taint effect can be `NoSchedule`, `NoExecute` or `PreferNoSchedule`
+```
+- Remove taint
+```bash
+kubectl taint nodes <node-name>  key=value:TaintEffect-
+```

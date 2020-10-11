@@ -6,7 +6,12 @@ metadata:
   labels:
     app: fastify_server
 spec:
-  replicas: 1
+  replicas: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: '5%'
   selector:
     matchLabels:
       app: fastify_server
@@ -15,16 +20,23 @@ spec:
       labels:
         app: fastify_server
     spec:
-      affinity:
-        nodeAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 100
-              preference:
-                matchExpressions:
-                  - key: node.type
-                    operator: In
-                    values:
-                      - slave
+      nodeSelector:
+        prefer: fastify-server
+      tolerations:
+        - key: 'special'
+          operator: 'Equal'
+          value: 'fastify-server'
+          effect: 'NoExecute'
+      # affinity:
+      #   nodeAffinity:
+      #     preferredDuringSchedulingIgnoredDuringExecution:
+      #       - weight: 100
+      #         preference:
+      #           matchExpressions:
+      #             - key: prefer
+      #               operator: In
+      #               values:
+      #                 - fastify-server
       containers:
         - name: fastify-server
           image: gkabitakis/fastify-server:1.0.0

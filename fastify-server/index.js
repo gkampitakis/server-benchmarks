@@ -1,10 +1,8 @@
 const fastify = require('fastify');
-const customHealthCheck = require('fastify-custom-healthcheck');
 
 class Server {
   constructor () {
     this.server = fastify();
-    this.server.register(customHealthCheck);
   }
 
   async start () {
@@ -17,19 +15,15 @@ class Server {
 
   registerRoutes () {
     this.server.get('/listen', (req, res) => {
-      console.log(JSON.stringify(req.query));
-
       res.status(200).send({
-        message: 'Responding back',
-        data: req.query
+        message: 'Responding back'
       });
     });
 
     this.server.post('/postdata', (req, res) => {
-      const bodyData = JSON.stringify(req.body);
-      console.log(bodyData);
-
-      res.status(201).send(JSON.parse(bodyData));
+      res.status(200).send({
+        message: 'Responding back'
+      });
     });
   }
 }

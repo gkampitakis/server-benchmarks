@@ -1,14 +1,18 @@
+APP_NAME = go_server
+BUILD_DIR = ${PWD}/build
+
 # Go Paramaters
 clean-deps:
 	go mod tidy
 
+clean:
+	rm -rf ./build
+
 build:
-	go build server.go
+	CGO_ENABLED=0 go build -ldflags="-w -s" -o $(BUILD_DIR)/$(APP_NAME) server.go
 
 run:
-	./server
+	$(BUILD_DIR)/$(APP_NAME)
 
 clean:
 	rm server
-
-all: build run

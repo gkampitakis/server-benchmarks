@@ -13,7 +13,7 @@ COPY . .
 # Set necessary environment variables needed for our image 
 # and build the API server.
 ENV CGO_ENABLED=0 GOOS=linux GOARCH=amd64
-RUN go build -ldflags="-s -w" -o apiserver .
+RUN go build -ldflags="-s -w" -o go_server .
 
 FROM scratch
 
@@ -25,4 +25,4 @@ COPY --from=builder ["/build/go_server", "/"]
 EXPOSE 5000
 
 # Command to run when starting the container.
-ENTRYPOINT ["/go_server"]
+CMD ["/go_server"]
